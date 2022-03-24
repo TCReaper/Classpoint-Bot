@@ -8,4 +8,4 @@ A simple Chrome-based bot creator
 
 ## Usage
 1. Edit variables in the main code
-2. Run code
+2. Run code (classpoint.ipynb or classpoint.py)
