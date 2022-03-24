@@ -14,8 +14,8 @@ import pyautogui
 ##################################################################################
 random_names = True
 bot_name_input = 'Name'
-bot_amount_input = 15
-pin = 16585
+bot_amount_input = 150
+pin = 99668
 ##################################################################################
 
 PATH = "chromedriver/chromedriverwindows.exe"
@@ -23,7 +23,7 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/" \
              "537.36 (KHTML, like Gecko) Chrome/" \
              "87.0.4280.88 Safari/537.36"
 options = webdriver.ChromeOptions()
-options.headless = True
+#options.headless = True
 options.add_argument(f"user-agent={USER_AGENT}")
 options.add_argument("--window-size=1920,1080")
 options.add_argument("--ignore-certificate-errors")
@@ -35,6 +35,7 @@ options.add_argument("--start-maximized")
 options.add_argument("--disable-gpu")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--no-sandbox")
+options.add_argument("--headless")
 
 
 def create_bot(pin, bot_name):
@@ -47,8 +48,18 @@ def create_bot(pin, bot_name):
     bot_name_entry = driver.find_element_by_name("name")
     bot_name_entry.send_keys(bot_name + str(i + 1))
     bot_name_entry.send_keys(Keys.RETURN)
+
+    # check = driver.find_element_by_class_name("avatar-content")
+
+    try:
+        check = WebDriverWait(driver, 10).until(
+            ec.presence_of_element_located((By.CLASS_NAME, "avatar-content"))
+            )
+    finally:
+        driver.quit()
+
+    #sleep(0.3)
     
-    sleep(0.45)
 
 for i in range(bot_amount_input):
     if random_names:
