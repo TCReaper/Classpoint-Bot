@@ -12,10 +12,10 @@ from time import sleep
 import pyautogui
 
 ##################################################################################
-random_names = True
-bot_name_input = 'Name'
+random_names = False
+bot_name_input = 'FaithLTS'
 bot_amount_input = 150
-pin = 99668
+pin = 82250
 ##################################################################################
 
 PATH = "chromedriver/chromedriverwindows.exe"
